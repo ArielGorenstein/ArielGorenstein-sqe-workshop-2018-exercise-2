@@ -138,10 +138,10 @@ describe('Test', () => {
     it('resolve array', () => {
         assert.equal(
             parseCode('function test(){\n' +
-                '     let x = [0,1,2];\n' +
-                '     return x[0];\n' +
+                '     let x = [true,1,2];\n' +
+                '     if (x[0]) return 5;\n' +
                 '}').join('\n'),
-            'function test () {\n' + makeTabs(1) + 'return [0,1,2][0];\n}'
+            'function test () {\n' + (makeTabs(1) + 'if([true,1,2][0]) {').fontcolor('green') + '\n' + makeTabs(2) + 'return 5;\n' + makeTabs(1) + '}\n}'
         );
     }) ;
 });
